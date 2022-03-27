@@ -1,1 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Temperature Converter</title>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Oswald">
+<link rel="stylesheet" href="css/style.css">
 
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open Sans">
+<style>
+h1,h2,h3,h4,h5,h6 {font-family: "Oswald"}
+body {font-family: "Open Sans"}
+</style>
+</head>
+<body>
+
+<div class="temp-content" style="max-width:1600px">
+  <header class="temp-container w3-center w3-padding-48 w3-white">
+    <h1 class="w3-xxxlarge"><b>Temperature converter</b></h1>
+  </header>
+          <div id="converter">
+            <label for="degrees" class="temp-d">Degrees</label>
+            <input type="number" id="degrees">
+            <label for="type">Type</label>
+            <select id="type">
+              <option value="fahrenheit">Fahrenheit</option>
+              <option value="celsius">Celsius</option>
+              <option value="kelvin">Kelvin</option>
+            </select>
+            <button id="convert" onclick="convert()">Convert</button>
+            <hr><label id="resultlabel" >Result:</h2>
+              <h2  id="result"></h2>
+          </div>
+    </div>
+    
+<script>
+  function convert() {
+	var degrees = document.getElementById("degrees").value;
+	if (document.getElementById("type").value == "fahrenheit") {
+		document.getElementById("result").innerHTML = `${(degrees - 32) / 1.8}°C<br>${
+			(degrees - 32) / 1.8 + 273.15
+		}°K`;
+	} else if (document.getElementById("type").value == "celsius") {
+		document.getElementById("result").innerHTML = `${degrees * 1.8 + 32}°F<br>${
+			parseFloat(degrees) + 273.15
+		}°K`;
+	} else if (document.getElementById("type").value == "kelvin") {
+		document.getElementById("result").innerHTML = `${
+			(degrees - 273.15) * 1.8 + 32
+		}°F<br>${parseFloat(degrees) - 273.15}°C`;
+	}
+}
+</script>
+</body>
+</html>
